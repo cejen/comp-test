@@ -1,19 +1,19 @@
 create or replace package plsql_archiver
 as
-procedure archive_version
-( p_object_name   in  varchar2
-, p_object_type   in  varchar2
-, p_object_owner  in varchar2
-, p_creation_time in date
-);
-procedure revert_to_previous_version -- undo last change; can be called repeatedly
+    procedure archiveVersion(
+        objectName in  varchar2,
+        objectType in  varchar2,
+        objectOwner in varchar2,
+        creationTime in date);
+
+/*procedure revert_to_previous_version -- undo last change; can be called repeatedly
 ( p_object_name   in varchar2
 , p_object_type   in varchar2
 , p_object_owner  in varchar2
 , p_purge_latest  in varchar2 default 'Y' 
-);
+);*/
 
-procedure revert_to_version
+/*procedure revert_to_version
 ( p_object_name   in varchar2
 , p_object_type   in varchar2
 , p_object_owner  in varchar2
@@ -21,7 +21,7 @@ procedure revert_to_version
 , p_branch        in varchar2
 , p_seq           in number
 , p_purge_later   in varchar2 default 'N' 
-);
+);*/
 
 /*
 procedure revert_to_version
@@ -58,7 +58,7 @@ procedure create_stripe
 , p_seq           in number   default null
 );
 */
-function version_graph
+/*function version_graph
 ( p_object_name   in varchar2
 , p_object_type   in varchar2
 , p_object_owner  in varchar2 
@@ -70,6 +70,6 @@ function version_graph
 , p_show_status        in  varchar2 default 'N' -- display the status (VALID or INVALID) of the version
 , p_show_comments      in  varchar2 default 'N' -- display the Comments for each version
 ) return string_table
-;
+;*/
 end plsql_archiver;
 /
